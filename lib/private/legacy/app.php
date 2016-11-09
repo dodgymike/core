@@ -104,7 +104,11 @@ class OC_App {
 			return false;
 		}
 		// Load the enabled apps here
-		$apps = self::getEnabledApps();
+                if(in_array('prelogin', $types)) {
+                        $apps = self::getEnabledApps(false, true);
+                } else {
+                        $apps = self::getEnabledApps();
+                }
 
 		// Add each apps' folder as allowed class path
 		foreach($apps as $app) {
